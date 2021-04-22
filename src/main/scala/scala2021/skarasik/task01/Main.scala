@@ -1,4 +1,4 @@
-package scala2021.skarasik.task1
+package scala2021.skarasik.task01
 
 object Main {
   def main(args: Array[String]) {
