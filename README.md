@@ -7,3 +7,5 @@ The original template repo is https://github.com/sbogdanchuk/scala2021.
 Done.
 ### Task 2
 Done.
+### Task 3
+Done.
