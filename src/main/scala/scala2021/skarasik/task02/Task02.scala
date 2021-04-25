@@ -13,7 +13,6 @@ object Task02 {
 
     tests.foreach(test => {
       val (string, expected) = test
-      val actual = checkParenthesesBalance(string.toList)
       assert(
         checkParenthesesBalance(string.toList) == expected,
         "Test \"" + string + "\" is failed!")
