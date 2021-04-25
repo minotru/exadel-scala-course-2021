@@ -1,6 +1,6 @@
 package scala2021.skarasik.task01
 
-object Main {
+object Task01 {
   def main(args: Array[String]) {
     val counts = Array(
       "900,google.com",
