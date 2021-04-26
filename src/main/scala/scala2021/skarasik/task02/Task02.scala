@@ -23,18 +23,16 @@ object Task02 {
 
   def checkParenthesesBalance(charList: List[Char]): Boolean = {
     @tailrec
-    def checkRecursive(iter: Iterator[Char], openCount: Int): Boolean = {
-      if (iter.hasNext) {
-        iter.next() match {
-          case '(' => checkRecursive(iter, openCount + 1)
-          case ')' => if (openCount == 0) false else checkRecursive(iter, openCount - 1)
-          case _ => checkRecursive(iter, openCount)
+    def checkRecursive(values: List[Char], openCount: Int): Boolean = values match {
+      case current :: nextValues =>
+        current match {
+          case '(' => checkRecursive(nextValues, openCount + 1)
+          case ')' => if (openCount == 0) false else checkRecursive(nextValues, openCount - 1)
+          case _ => checkRecursive(nextValues, openCount)
         }
-      } else {
-        openCount == 0
-      }
+      case _ => openCount == 0
     }
 
-    checkRecursive(charList.iterator, 0)
+    checkRecursive(charList, 0)
   }
 }
