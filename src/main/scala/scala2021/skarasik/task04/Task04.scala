@@ -11,16 +11,16 @@ object Task04 {
 
     for (testCase <- testCases) {
       val (coins, change, expected) = testCase
-      assert(canGiveChangeNaive(coins, change) == expected,
+      assert(canGiveChangeBruteForce(coins, change) == expected,
         s"Failed case: ${testCase}")
     }
 
     println("All tests are passed.")
   }
 
-  def canGiveChangeNaive(coins: List[Int], change: Int): Boolean = {
+  def canGiveChangeBruteForce(coins: List[Int], change: Int): Boolean = {
     @tailrec
-    def _canGiveChangeNaive(coins: List[Int], change: Int, mask: Int): Boolean = {
+    def _canGiveChangeBruteForce(coins: List[Int], change: Int, mask: Int): Boolean = {
       val sum = mask
         .toBinaryString
         .take(coins.length)
@@ -35,10 +35,10 @@ object Task04 {
         false
       }
       else {
-        _canGiveChangeNaive(coins, change, mask + 1)
+        _canGiveChangeBruteForce(coins, change, mask + 1)
       }
     }
 
-    _canGiveChangeNaive(coins, change, 1)
+    coins.contains(change) || _canGiveChangeBruteForce(coins, change, 1)
   }
 }
