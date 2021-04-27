@@ -11,8 +11,7 @@ object Task04 {
 
     for (testCase <- testCases) {
       val (coins, change, expected) = testCase
-      assert(canGiveChangeBruteForce(coins, change) == expected,
-        s"Failed case: ${testCase}")
+      assert(canGiveChangeBruteForce(coins, change) == expected, "Failed case: ${testCase}")
     }
 
     println("All tests are passed.")
