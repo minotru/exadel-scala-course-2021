@@ -19,6 +19,9 @@ object Task04 {
   }
 
   def canGiveChangeBruteForce(coins: List[Int], change: Int): Boolean = {
+    // a brute force solution - generate all subsets (2^N) an check the sum.
+    // works with 32 coins at most (there are 32 in bits in Int).
+    
     @tailrec
     def _canGiveChangeBruteForce(coins: List[Int], change: Int, mask: Int): Boolean = {
       val sum = mask
