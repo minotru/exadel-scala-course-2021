@@ -14,3 +14,6 @@ Implemented 2 partial solutions:
 
 1. Brute force with `@tailrec`
 2. Recursive solution but without `@tailrec` and stored table 
+
+## Task 5
+Done.
