@@ -17,3 +17,6 @@ Implemented 2 partial solutions:
 
 ## Task 5
 Done.
+
+### Task 6
+Done.
