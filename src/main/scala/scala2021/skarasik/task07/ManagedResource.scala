@@ -1,7 +1,7 @@
 package scala2021.skarasik.task07
 
 import scala.language.implicitConversions
-import scala.util.{Try, Success, Failure}
+import scala.util.Try
 
 class SomeResource(val throwException: Boolean = false) {
   def run(): Unit = {
@@ -46,29 +46,14 @@ object ManagedResource {
     })
   }
 
-  // todo: should withResource return Try[O] or O?
   def withResource[R, O](createResource: => R)(useResource: R => O)(implicit closeResource: R => Unit): Try[O] = {
-    Try(createResource) match {
-      case Success(resource) =>  {
-        val tryUse = Try(useResource(resource))
-        val tryClose = Try(closeResource(resource))
-
-        tryClose match {
-          case Success(_) => tryUse
-          case Failure(closeEx) => Failure(closeEx)
-        }
+    Try {
+      val resource = createResource
+      try {
+        useResource(resource)
+      } finally {
+        closeResource(resource)
       }
-      case Failure(ex) => Failure(ex)
-    }
-  }
-
-  // version 2 - using vanilla try ... finally
-  def withResourceV2[R, O](createResource: => R)(useResource: R => O)(implicit closeResource: R => Unit): O = {
-    val resource = createResource
-    try {
-      useResource(resource)
-    } finally {
-      closeResource(resource)
     }
   }
 }
