@@ -3,17 +3,6 @@ package scala2021.skarasik.task07
 import scala.language.implicitConversions
 import scala.util.{Try, Success, Failure}
 
-object ManagedUtils {
-  implicit def defaultCloseResource[R](resource: R): Unit = {}
-}
-
-object SomeResource {
-  def badInit(): SomeResource = {
-    throw new Exception("Exception during init")
-    new SomeResource()
-  }
-}
-
 class SomeResource(val throwException: Boolean = false) {
   def run(): Unit = {
     if (throwException) {
