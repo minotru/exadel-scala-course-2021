@@ -61,4 +61,14 @@ object ManagedResource {
       case Failure(ex) => Failure(ex)
     }
   }
+
+  // version 2 - using vanilla try ... finally
+  def withResourceV2[R, O](createResource: => R)(useResource: R => O)(implicit closeResource: R => Unit): O = {
+    val resource = createResource
+    try {
+      useResource(resource)
+    } finally {
+      closeResource(resource)
+    }
+  }
 }
