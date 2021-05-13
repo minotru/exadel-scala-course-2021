@@ -20,3 +20,12 @@ Done.
 
 ### Task 6
 Done.
+
+### Task 7
+Done.
+
+### Task 8
+Done.
+
+### Task 9
+Done.
